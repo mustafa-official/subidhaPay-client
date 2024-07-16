@@ -21,7 +21,15 @@ const Register = () => {
       return;
     }
 
-    const registerInfo = { name, email, mobile, role, pin };
+    const registerInfo = {
+      name,
+      email,
+      mobile,
+      role,
+      pin,
+      balance: 0,
+      status: "pending",
+    };
     console.log(registerInfo);
     try {
       const { data } = await axiosPublic.post("/register", registerInfo);
@@ -29,7 +37,7 @@ const Register = () => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("identifier", email);
         toast.success("Registration Successful");
-        navigate("/dashboard");
+        navigate("/dashboard/profile");
       } else {
         toast.error("Registration Failed");
       }
@@ -78,7 +86,6 @@ const Register = () => {
             >
               <option value="user">User</option>
               <option value="agent">Agent</option>
-              <option value="admin">Admin</option>
             </select>
           </div>
           <div className="form-control">

@@ -13,11 +13,6 @@ const Login = () => {
     const identifier = form.identifier.value;
     const pin = form.pin.value;
 
-    // Validate the PIN
-    if (!/^\d{5}$/.test(pin)) {
-      toast.error("PIN must be a 5-digit number");
-      return;
-    }
     const loginInfo = { identifier, pin };
 
     try {
@@ -26,9 +21,9 @@ const Login = () => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("identifier", identifier);
         const userData = await fetchUserData(identifier, data.token); // Fetch user data
-        setUser(userData); // Set user data in state
+        setUser(userData); 
         toast.success("Login Successful");
-        navigate("/dashboard");
+        navigate("/dashboard/profile"); 
       } else {
         toast.error(data.data);
       }
@@ -84,7 +79,7 @@ const Login = () => {
             </button>
             <small className="mt-1 mx-auto">
               New user?{" "}
-              <Link to="/register" className="text-primary hover:underline">
+              <Link to="/" className="text-primary hover:underline">
                 Register
               </Link>
             </small>

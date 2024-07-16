@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { AiOutlineBars } from "react-icons/ai";
 import { GrLogout } from "react-icons/gr";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { FaUsers } from "react-icons/fa";
+import { TbLayoutDashboardFilled } from "react-icons/tb";
 
 const Sidebar = () => {
   const [isActive, setActive] = useState(false);
@@ -19,6 +21,7 @@ const Sidebar = () => {
     localStorage.removeItem("identifier");
     navigate("/login");
   };
+
   return (
     <>
       {/* Small Screen Navbar */}
@@ -42,14 +45,46 @@ const Sidebar = () => {
       >
         <div>
           <div>
-            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-rose-100 mx-auto">
+            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center  mx-auto">
               MFS App
             </div>
           </div>
 
           {/* Nav Items */}
+
           <div className="flex flex-col justify-between flex-1 mt-6">
             {/* Menu Items */}
+            <NavLink
+              end
+              to="/dashboard/profile"
+              className={({ isActive }) =>
+                `flex items-center px-4 py-2 my-5 rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                  isActive ? "bg-[#3a89ff42]  text-[#2461E9]" : "text-gray-600"
+                }`
+              }
+            >
+              <TbLayoutDashboardFilled className="w-5 h-5" />
+              <span className="mx-4 font-medium">Dashboard</span>
+            </NavLink>
+
+            {/* admin */}
+            {user?.role === "admin" && (
+              <NavLink
+                end
+                to="/dashboard/all-user"
+                className={({ isActive }) =>
+                  `flex items-center px-4 py-2  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                    isActive
+                      ? "bg-[#3a89ff42]  text-[#2461E9]"
+                      : "text-gray-600"
+                  }`
+                }
+              >
+                <FaUsers className="w-5 h-5" />
+
+                <span className="mx-4 font-medium">All Users</span>
+              </NavLink>
+            )}
           </div>
         </div>
 

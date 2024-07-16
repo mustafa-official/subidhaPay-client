@@ -1,10 +1,11 @@
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 //  const { data } = await axiosPublic.post("/register", registerInfo);
 
 const Register = () => {
   const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -15,13 +16,20 @@ const Register = () => {
     const role = form.role.value;
     const pin = form.pin.value;
 
+    if (!/^\d{5}$/.test(pin)) {
+      toast.error("PIN must be a 5-digit number");
+      return;
+    }
+
     const registerInfo = { name, email, mobile, role, pin };
     console.log(registerInfo);
     try {
       const { data } = await axiosPublic.post("/register", registerInfo);
       if (data.data === "register successful") {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("identifier", email);
         toast.success("Registration Successful");
+        navigate("/dashboard");
       } else {
         toast.error("Registration Failed");
       }
@@ -80,6 +88,10 @@ const Register = () => {
               placeholder="PIN"
               className="input input-bordered"
               required
+              pattern="\d{5}"
+              minLength={5}
+              maxLength={5}
+              title="PIN must be a 5-digit number"
             />
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">

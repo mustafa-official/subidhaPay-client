@@ -1,56 +1,54 @@
 import toast from "react-hot-toast";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
-import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useState } from "react";
 import { ImSpinner3 } from "react-icons/im";
+import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
-const SendMoney = () => {
+const CashOut = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
   const [loading, setLoading] = useState(false);
-  console.log(user?.email);
 
-  const handleSendMoney = async (e) => {
+  const handleCashOut = async (e) => {
     setLoading(true);
     e.preventDefault();
     const form = e.target;
     const mobile = form.mobile.value;
     const amount = parseInt(form.amount.value);
     const pin = form.pin.value;
-
-    if (amount < 50) {
-      setLoading(false);
-      return toast.error("Amount at least 50tk");
-    }
-    const sendMoneyInfo = { mobile, amount, pin, userEmail: user?.email };
+    const cashOutInfo = { mobile, amount, pin, userEmail: user?.email };
+    console.log(cashOutInfo);
     try {
-      const { data } = await axiosPublic.patch("/send-money", sendMoneyInfo);
-      if (data.modifiedCount > 0) {
+      const { data } = await axiosPublic.patch("/cash-out", cashOutInfo);
+      if (data.data === "Cash out successful") {
         setLoading(false);
         form.reset();
-        return toast.success("Send Money Successfully");
+        return toast.success("Cash out successful");
       } else if (data.data === "Invalid Pin") {
         setLoading(false);
         return toast.error("Invalid Pin");
-      } else if (data.data === "Invalid account") {
+      } else if (data.data === "Invalid agent account") {
         setLoading(false);
-        return toast.error("Invalid account");
+        return toast.error("Invalid agent account");
       } else if (data.data === "User not found") {
         setLoading(false);
         return toast.error("User not found");
+      } else if (data.data === "Insufficient balance") {
+        setLoading(false);
+        return toast.error("Insufficient balance");
       }
     } catch (error) {
-      console.log(error);
-      toast.error("An error occurred");
+      console.error(error);
       setLoading(false);
+      return toast.error("An error occurred");
     }
   };
   return (
     <div className="flex justify-center items-center">
       <form
-        onSubmit={handleSendMoney}
+        onSubmit={handleCashOut}
         className="flex justify-center items-center h-[90vh] w-[80%] lg:w-[50%] flex-col gap-3"
       >
         <label className="input input-bordered flex items-center gap-2 w-full">
@@ -60,7 +58,7 @@ const SendMoney = () => {
             type="number"
             required
             className="w-full"
-            placeholder="Phone number (user)"
+            placeholder="Phone number (agent)"
           />
         </label>
         <label className="input input-bordered flex items-center gap-2 w-full">
@@ -103,7 +101,7 @@ const SendMoney = () => {
           {loading ? (
             <ImSpinner3 size={18} className="animate-spin m-auto"></ImSpinner3>
           ) : (
-            "Send Money"
+            "Cash Out"
           )}
         </button>
       </form>
@@ -111,4 +109,4 @@ const SendMoney = () => {
   );
 };
 
-export default SendMoney;
+export default CashOut;

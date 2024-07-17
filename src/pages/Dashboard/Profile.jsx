@@ -6,7 +6,7 @@ import Spinner from "../../components/Spinner";
 
 const Profile = () => {
   const { user, loading } = useAuth();
-  if(loading) return <Spinner></Spinner>
+  if (loading) return <Spinner></Spinner>;
   return (
     <div className="m-6">
       <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
@@ -17,7 +17,9 @@ const Profile = () => {
             </div>
 
             <div className="mx-5 flex flex-col flex-wrap">
-              <h4 className="text-2xl flex flex-wrap font-semibold text-gray-700">{user?.name}</h4>
+              <h4 className="text-2xl flex flex-wrap font-semibold text-gray-700">
+                {user?.name}
+              </h4>
               <div className="text-gray-500">Name</div>
             </div>
           </div>
@@ -29,7 +31,9 @@ const Profile = () => {
             </div>
 
             <div className="mx-5 flex flex-col flex-wrap">
-              <h4 className="text-2xl flex flex-wrap font-semibold text-gray-700">{user?.balance}</h4>
+              <h4 className="text-2xl flex flex-wrap font-semibold text-gray-700">
+                {user?.balance.toFixed(2)}
+              </h4>
               <div className="text-gray-500">Balance</div>
             </div>
           </div>
@@ -41,7 +45,9 @@ const Profile = () => {
             </div>
 
             <div className="mx-5 flex flex-col flex-wrap">
-              <h4 className="text-2xl flex flex-wrap font-semibold text-gray-700">{user?.email}</h4>
+              <h4 className="text-2xl flex flex-wrap font-semibold text-gray-700">
+                {user?.email}
+              </h4>
               <div className="text-gray-500">Email</div>
             </div>
           </div>
@@ -53,7 +59,9 @@ const Profile = () => {
             </div>
 
             <div className="mx-5 flex flex-col flex-wrap">
-              <h4 className="text-2xl flex flex-wrap font-semibold text-gray-700">{user?.mobile}</h4>
+              <h4 className="text-2xl flex flex-wrap font-semibold text-gray-700">
+                {user?.mobile}
+              </h4>
               <div className="text-gray-500">Phone</div>
             </div>
           </div>

@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 import { FaUsers } from "react-icons/fa";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { BsFillSendCheckFill } from "react-icons/bs";
+import { MdOutlineSendToMobile } from "react-icons/md";
 
 const Sidebar = () => {
   const [isActive, setActive] = useState(false);
@@ -89,21 +90,39 @@ const Sidebar = () => {
 
             {/* user */}
             {user?.role === "user" && (
-              <NavLink
-                end
-                to="/dashboard/send-money"
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
-                    isActive
-                      ? "bg-[#3a89ff42]  text-[#2461E9]"
-                      : "text-gray-600"
-                  }`
-                }
-              >
-                <BsFillSendCheckFill className="w-5 h-5" />
+              <>
+                <NavLink
+                  end
+                  to="/dashboard/send-money"
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                      isActive
+                        ? "bg-[#3a89ff42]  text-[#2461E9]"
+                        : "text-gray-600"
+                    }`
+                  }
+                >
+                  <BsFillSendCheckFill className="w-5 h-5" />
 
-                <span className="mx-4 font-medium">Send Money</span>
-              </NavLink>
+                  <span className="mx-4 font-medium">Send Money</span>
+                </NavLink>
+
+                <NavLink
+                  end
+                  to="/dashboard/cash-out"
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                      isActive
+                        ? "bg-[#3a89ff42]  text-[#2461E9]"
+                        : "text-gray-600"
+                    }`
+                  }
+                >
+                  <MdOutlineSendToMobile className="w-5 h-5" />
+
+                  <span className="mx-4 font-medium">Cash Out</span>
+                </NavLink>
+              </>
             )}
           </div>
         </div>

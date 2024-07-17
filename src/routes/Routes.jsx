@@ -10,6 +10,8 @@ import Profile from "../pages/Dashboard/Profile";
 import AllUser from "../pages/Dashboard/AllUser";
 import SendMoney from "../pages/Dashboard/SendMoney";
 import CashOut from "../pages/Dashboard/CashOut";
+import CashIn from "../pages/Dashboard/CashIn";
+import ManageTransReq from "../pages/Dashboard/ManageTransReq";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +56,14 @@ const router = createBrowserRouter([
       {
         path: "cash-out",
         element: <CashOut></CashOut>,
+      },
+      {
+        path: "cash-in",
+        element: <CashIn></CashIn>,
+      },
+      {
+        path: "trans-request",
+        element: <ManageTransReq></ManageTransReq>,
       },
     ],
   },

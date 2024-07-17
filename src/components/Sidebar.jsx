@@ -7,6 +7,7 @@ import { FaUsers } from "react-icons/fa";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { BsFillSendCheckFill } from "react-icons/bs";
 import { MdOutlineSendToMobile } from "react-icons/md";
+import { PiHandWithdrawBold } from "react-icons/pi";
 
 const Sidebar = () => {
   const [isActive, setActive] = useState(false);
@@ -102,7 +103,7 @@ const Sidebar = () => {
                     }`
                   }
                 >
-                  <BsFillSendCheckFill className="w-5 h-5" />
+                  <BsFillSendCheckFill size={18} />
 
                   <span className="mx-4 font-medium">Send Money</span>
                 </NavLink>
@@ -121,6 +122,43 @@ const Sidebar = () => {
                   <MdOutlineSendToMobile className="w-5 h-5" />
 
                   <span className="mx-4 font-medium">Cash Out</span>
+                </NavLink>
+
+                <NavLink
+                  end
+                  to="/dashboard/cash-in"
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2   rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                      isActive
+                        ? "bg-[#3a89ff42]  text-[#2461E9]"
+                        : "text-gray-600"
+                    }`
+                  }
+                >
+                  <PiHandWithdrawBold className="w-5 h-5" />
+
+                  <span className="mx-4 font-medium">Cash In</span>
+                </NavLink>
+              </>
+            )}
+
+            {/* agent */}
+            {user?.role === "agent" && (
+              <>
+                <NavLink
+                  end
+                  to="/dashboard/trans-request"
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                      isActive
+                        ? "bg-[#3a89ff42]  text-[#2461E9]"
+                        : "text-gray-600"
+                    }`
+                  }
+                >
+                  <BsFillSendCheckFill size={18} />
+
+                  <span className="mx-4 font-medium">Trans Request</span>
                 </NavLink>
               </>
             )}

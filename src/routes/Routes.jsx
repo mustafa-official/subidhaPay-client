@@ -8,6 +8,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../pages/Dashboard/Profile";
 import AllUser from "../pages/Dashboard/AllUser";
+import SendMoney from "../pages/Dashboard/SendMoney";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "all-user",
         element: <AllUser></AllUser>,
+      },
+      {
+        path: "send-money",
+        element: <SendMoney></SendMoney>,
       },
     ],
   },

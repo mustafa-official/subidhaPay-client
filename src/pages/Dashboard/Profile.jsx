@@ -1,8 +1,8 @@
 import { FaPhoneAlt, FaUser } from "react-icons/fa";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
-import { TfiEmail } from "react-icons/tfi";
 import useAuth from "../../hooks/useAuth";
 import Spinner from "../../components/Spinner";
+import { GrMail } from "react-icons/gr";
 
 const Profile = () => {
   const { user, loading } = useAuth();
@@ -27,7 +27,7 @@ const Profile = () => {
         {user?.role === "user" || user?.role === "agent" ? (
           <div className="w-full">
             <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-slate-100">
-              <div className="w-14 h-14 flex justify-center items-center rounded-full bg-[#4EDC85] bg-opacity-75">
+              <div className="w-14 h-14 flex justify-center items-center rounded-full bg-indigo-600 bg-opacity-75">
                 <FaBangladeshiTakaSign color="white" size={25} />
               </div>
 
@@ -42,8 +42,9 @@ const Profile = () => {
         ) : null}
         <div className="w-full">
           <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-slate-100">
-            <div className="w-14 h-14 flex justify-center items-center rounded-full bg-[#F43F5E] bg-opacity-75">
-              <TfiEmail color="white" size={25} />
+            <div className="w-14 h-14 flex justify-center items-center rounded-full bg-indigo-600 bg-opacity-75">
+   
+              <GrMail color="white" size={25}></GrMail>
             </div>
 
             <div className="mx-5 flex flex-col flex-wrap">
@@ -56,7 +57,7 @@ const Profile = () => {
         </div>
         <div className="w-full">
           <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-slate-100">
-            <div className="w-14 h-14 flex justify-center items-center rounded-full bg-[#0EA5E9] bg-opacity-75">
+            <div className="w-14 h-14 flex justify-center items-center rounded-full bg-indigo-600 bg-opacity-75">
               <FaPhoneAlt color="white" size={23} />
             </div>
 

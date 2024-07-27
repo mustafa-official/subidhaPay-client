@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useState } from "react";
 import { ImSpinner3 } from "react-icons/im";
+import { RiKeyFill } from "react-icons/ri";
 
 const SendMoney = () => {
   const { user } = useAuth();
@@ -54,7 +55,7 @@ const SendMoney = () => {
         className="flex justify-center items-center h-[90vh] w-[80%] lg:w-[50%] flex-col gap-3"
       >
         <label className="input input-bordered flex items-center gap-2 w-full">
-          <FaPhoneAlt color="gray" size={14}></FaPhoneAlt>
+          <FaPhoneAlt color="#626973" size={14}></FaPhoneAlt>
           <input
             name="mobile"
             type="number"
@@ -64,7 +65,10 @@ const SendMoney = () => {
           />
         </label>
         <label className="input input-bordered flex items-center gap-2 w-full">
-          <FaBangladeshiTakaSign color="gray" size={15}></FaBangladeshiTakaSign>
+          <FaBangladeshiTakaSign
+            color="#626973"
+            size={15}
+          ></FaBangladeshiTakaSign>
           <input
             name="amount"
             required
@@ -75,18 +79,7 @@ const SendMoney = () => {
           />
         </label>
         <label className="input input-bordered flex items-center gap-2 w-full">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            className="h-4 w-4 opacity-70"
-          >
-            <path
-              fillRule="evenodd"
-              d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <RiKeyFill color="#626973" size={16}></RiKeyFill>
           <input
             name="pin"
             required
@@ -98,7 +91,7 @@ const SendMoney = () => {
         <button
           disabled={loading}
           type="submit"
-          className="disabled:cursor-not-allowed flex items-center px-4 w-full justify-center py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+          className="disabled:cursor-not-allowed flex items-center px-4 w-full justify-center py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
         >
           {loading ? (
             <ImSpinner3 size={18} className="animate-spin m-auto"></ImSpinner3>

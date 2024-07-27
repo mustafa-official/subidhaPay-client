@@ -4,7 +4,7 @@ const Spinner = () => {
   return (
     <div className="flex justify-center items-center h-[70vh]">
       <ClipLoader
-        color="#5e05ec"
+        color="#4F46E5"
         size={30}
         aria-label="Loading Spinner"
         data-testid="loader"

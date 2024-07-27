@@ -44,7 +44,7 @@ const CashIn = () => {
         className="flex justify-center items-center h-[90vh] w-[80%] lg:w-[50%] flex-col gap-3"
       >
         <label className="input input-bordered flex items-center gap-2 w-full">
-          <FaPhoneAlt color="gray" size={14}></FaPhoneAlt>
+          <FaPhoneAlt color="#626973" size={14}></FaPhoneAlt>
           <input
             name="mobile"
             type="number"
@@ -54,7 +54,10 @@ const CashIn = () => {
           />
         </label>
         <label className="input input-bordered flex items-center gap-2 w-full">
-          <FaBangladeshiTakaSign color="gray" size={15}></FaBangladeshiTakaSign>
+          <FaBangladeshiTakaSign
+            color="#626973"
+            size={15}
+          ></FaBangladeshiTakaSign>
           <input
             name="amount"
             required
@@ -68,7 +71,7 @@ const CashIn = () => {
         <button
           disabled={loading}
           type="submit"
-          className="disabled:cursor-not-allowed flex items-center px-4 w-full justify-center py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+          className="disabled:cursor-not-allowed flex items-center px-4 w-full justify-center py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
         >
           {loading ? (
             <ImSpinner3 size={18} className="animate-spin m-auto"></ImSpinner3>

@@ -27,7 +27,7 @@ const Sidebar = () => {
   };
 
   return (
-    <>
+    <aside>
       {/* Small Screen Navbar */}
       <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden">
         <div>
@@ -43,7 +43,7 @@ const Sidebar = () => {
       </div>
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#F1F5F9] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
@@ -62,12 +62,12 @@ const Sidebar = () => {
               end
               to="/dashboard/profile"
               className={({ isActive }) =>
-                `flex items-center px-4 py-2 my-5 rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
-                  isActive ? "bg-[#3a89ff42]  text-[#2461E9]" : "text-gray-600"
+                `relative group flex items-center px-4 py-2 my-5  hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
+                  isActive ? "bg-indigo-200  text-indigo-600" : "text-gray-800"
                 }`
               }
             >
-              <TbLayoutDashboardFilled className="w-5 h-5" />
+              <TbLayoutDashboardFilled className="w-5 h-5 transition-transform duration-300 transform group-hover:rotate-[90deg]" />
               <span className="mx-4 font-medium">Dashboard</span>
             </NavLink>
 
@@ -78,10 +78,10 @@ const Sidebar = () => {
                   end
                   to="/dashboard/all-user"
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                    `flex items-center px-4 py-2  hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
                       isActive
-                        ? "bg-[#3a89ff42]  text-[#2461E9]"
-                        : "text-gray-600"
+                        ? "bg-indigo-200  text-indigo-600"
+                        : "text-gray-800"
                     }`
                   }
                 >
@@ -93,10 +93,10 @@ const Sidebar = () => {
                   end
                   to="/dashboard/all-transaction"
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5 rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                    `flex items-center px-4 py-2 my-5 hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
                       isActive
-                        ? "bg-[#3a89ff42]  text-[#2461E9]"
-                        : "text-gray-600"
+                        ? "bg-indigo-200  text-indigo-600"
+                        : "text-gray-800"
                     }`
                   }
                 >
@@ -114,14 +114,14 @@ const Sidebar = () => {
                   end
                   to="/dashboard/send-money"
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                    `relative group flex items-center px-4 py-2  hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
                       isActive
-                        ? "bg-[#3a89ff42]  text-[#2461E9]"
-                        : "text-gray-600"
+                        ? "bg-indigo-200  text-indigo-600"
+                        : "text-gray-800"
                     }`
                   }
                 >
-                  <BsFillSendCheckFill size={18} />
+                  <BsFillSendCheckFill size={18} className="transition-transform duration-300 transform group-hover:rotate-[90deg]" />
 
                   <span className="mx-4 font-medium">Send Money</span>
                 </NavLink>
@@ -130,14 +130,14 @@ const Sidebar = () => {
                   end
                   to="/dashboard/cash-out"
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                    `relative group flex items-center px-4 py-2 my-5  hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
                       isActive
-                        ? "bg-[#3a89ff42]  text-[#2461E9]"
-                        : "text-gray-600"
+                        ? "bg-indigo-200  text-indigo-600"
+                        : "text-gray-800"
                     }`
                   }
                 >
-                  <MdOutlineSendToMobile className="w-5 h-5" />
+                  <MdOutlineSendToMobile className="w-5 h-5 transition-transform duration-300 transform group-hover:rotate-[90deg]" />
 
                   <span className="mx-4 font-medium">Cash Out</span>
                 </NavLink>
@@ -146,14 +146,14 @@ const Sidebar = () => {
                   end
                   to="/dashboard/cash-in"
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2   rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                    `relative group flex items-center px-4 py-2   hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
                       isActive
-                        ? "bg-[#3a89ff42]  text-[#2461E9]"
-                        : "text-gray-600"
+                        ? "bg-indigo-200  text-indigo-600"
+                        : "text-gray-800"
                     }`
                   }
                 >
-                  <PiHandWithdrawBold className="w-5 h-5" />
+                  <PiHandWithdrawBold className="w-5 h-5 transition-transform duration-300 transform group-hover:rotate-[90deg]" />
 
                   <span className="mx-4 font-medium">Cash In</span>
                 </NavLink>
@@ -161,14 +161,14 @@ const Sidebar = () => {
                   end
                   to="/dashboard/transaction-history"
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                    `relative group flex items-center px-4 py-2 my-5  hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
                       isActive
-                        ? "bg-[#3a89ff42]  text-[#2461E9]"
-                        : "text-gray-600"
+                        ? "bg-indigo-200  text-indigo-600"
+                        : "text-gray-800"
                     }`
                   }
                 >
-                  <RiHistoryFill className="w-5 h-5" />
+                  <RiHistoryFill className="w-5 h-5 transition-transform duration-300 transform group-hover:rotate-[90deg]" />
 
                   <span className="mx-4 font-medium">Trans History</span>
                 </NavLink>
@@ -182,14 +182,14 @@ const Sidebar = () => {
                   end
                   to="/dashboard/trans-request"
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                    `relative group flex items-center px-4 py-2  hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
                       isActive
-                        ? "bg-[#3a89ff42]  text-[#2461E9]"
-                        : "text-gray-600"
+                        ? "bg-indigo-200  text-indigo-600"
+                        : "text-gray-800"
                     }`
                   }
                 >
-                  <BsFillSendCheckFill size={18} />
+                  <BsFillSendCheckFill className="transition-transform duration-300 transform group-hover:rotate-[90deg]" size={18} />
 
                   <span className="mx-4 font-medium">Trans Request</span>
                 </NavLink>
@@ -197,14 +197,14 @@ const Sidebar = () => {
                   end
                   to="/dashboard/transaction-history-agent"
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                    `relative group flex items-center px-4 py-2 my-5  hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
                       isActive
-                        ? "bg-[#3a89ff42]  text-[#2461E9]"
-                        : "text-gray-600"
+                        ? "bg-indigo-200  text-indigo-600"
+                        : "text-gray-800"
                     }`
                   }
                 >
-                  <RiHistoryFill className="w-5 h-5" />
+                  <RiHistoryFill className="w-5 h-5 transition-transform duration-300 transform group-hover:rotate-[90deg]" />
 
                   <span className="mx-4 font-medium">Trans History</span>
                 </NavLink>
@@ -214,19 +214,19 @@ const Sidebar = () => {
         </div>
 
         <div>
-          <hr />
+          <hr className="border-dashed border-t-1 border-gray-300" />
 
           <button
             onClick={handleLogout}
-            className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+            className="relative group flex w-full items-center py-2 px-4 mt-3 text-gray-800 hover:bg-indigo-200   hover:text-indigo-600 transition-colors duration-300 transform "
           >
-            <GrLogout className="w-5 h-5" />
+            <GrLogout className="w-5 h-5 transition-transform duration-300 transform group-hover:rotate-[-90deg]" />
 
             <span className="mx-4 font-medium">Logout</span>
           </button>
         </div>
       </div>
-    </>
+    </aside>
   );
 };
 

@@ -183,7 +183,7 @@ const AllUser = () => {
                                     user?.status === "activate" ||
                                     user?.status === "block"
                                       ? "bg-gray-400 cursor-not-allowed"
-                                      : "bg-blue-600 hover:bg-blue-500"
+                                      : "bg-indigo-600 hover:bg-indigo-700"
                                   }`}
                                 >
                                   <span className="mx-1">Activate</span>
@@ -194,7 +194,7 @@ const AllUser = () => {
                                   className={`flex items-center px-3 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform focus:outline-none focus:ring rounded-lg focus:ring-blue-300 focus:ring-opacity-80 ${
                                     user?.status === "block"
                                       ? "bg-gray-400 cursor-not-allowed"
-                                      : "bg-blue-600 hover:bg-blue-500"
+                                      : "bg-indigo-600 hover:bg-indigo-700"
                                   }`}
                                 >
                                   <span className="mx-1">Block</span>

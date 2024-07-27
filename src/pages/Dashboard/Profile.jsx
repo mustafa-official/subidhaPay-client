@@ -24,20 +24,22 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <div className="w-full">
-          <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-slate-100">
-            <div className="w-14 h-14 flex justify-center items-center rounded-full bg-[#4EDC85] bg-opacity-75">
-              <FaBangladeshiTakaSign color="white" size={25} />
-            </div>
+        {user?.role === "user" || user?.role === "agent" ? (
+          <div className="w-full">
+            <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-slate-100">
+              <div className="w-14 h-14 flex justify-center items-center rounded-full bg-[#4EDC85] bg-opacity-75">
+                <FaBangladeshiTakaSign color="white" size={25} />
+              </div>
 
-            <div className="mx-5 flex flex-col flex-wrap">
-              <h4 className="text-2xl flex flex-wrap font-semibold text-gray-700">
-                {user?.balance.toFixed(2)}
-              </h4>
-              <div className="text-gray-500">Balance</div>
+              <div className="mx-5 flex flex-col flex-wrap">
+                <h4 className="text-2xl flex flex-wrap font-semibold text-gray-700">
+                  {user?.balance.toFixed(2)}
+                </h4>
+                <div className="text-gray-500">Balance</div>
+              </div>
             </div>
           </div>
-        </div>
+        ) : null}
         <div className="w-full">
           <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-slate-100">
             <div className="w-14 h-14 flex justify-center items-center rounded-full bg-[#F43F5E] bg-opacity-75">

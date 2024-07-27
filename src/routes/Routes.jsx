@@ -12,6 +12,9 @@ import SendMoney from "../pages/Dashboard/SendMoney";
 import CashOut from "../pages/Dashboard/CashOut";
 import CashIn from "../pages/Dashboard/CashIn";
 import ManageTransReq from "../pages/Dashboard/ManageTransReq";
+import TransactionHistory from "../pages/Dashboard/TransactionHistory";
+import TransHistoryAgent from "../pages/Dashboard/TransHistoryAgent";
+import AllTransaction from "../pages/Dashboard/AllTransaction";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +67,18 @@ const router = createBrowserRouter([
       {
         path: "trans-request",
         element: <ManageTransReq></ManageTransReq>,
+      },
+      {
+        path: "transaction-history",
+        element: <TransactionHistory></TransactionHistory>,
+      },
+      {
+        path: "transaction-history-agent",
+        element: <TransHistoryAgent></TransHistoryAgent>,
+      },
+      {
+        path: "all-transaction",
+        element: <AllTransaction></AllTransaction>,
       },
     ],
   },

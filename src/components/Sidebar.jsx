@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AiOutlineBars } from "react-icons/ai";
+import { AiOutlineBars, AiOutlineTransaction } from "react-icons/ai";
 import { GrLogout } from "react-icons/gr";
 import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
@@ -8,6 +8,7 @@ import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { BsFillSendCheckFill } from "react-icons/bs";
 import { MdOutlineSendToMobile } from "react-icons/md";
 import { PiHandWithdrawBold } from "react-icons/pi";
+import { RiHistoryFill } from "react-icons/ri";
 
 const Sidebar = () => {
   const [isActive, setActive] = useState(false);
@@ -72,21 +73,38 @@ const Sidebar = () => {
 
             {/* admin */}
             {user?.role === "admin" && (
-              <NavLink
-                end
-                to="/dashboard/all-user"
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
-                    isActive
-                      ? "bg-[#3a89ff42]  text-[#2461E9]"
-                      : "text-gray-600"
-                  }`
-                }
-              >
-                <FaUsers className="w-5 h-5" />
+              <>
+                <NavLink
+                  end
+                  to="/dashboard/all-user"
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                      isActive
+                        ? "bg-[#3a89ff42]  text-[#2461E9]"
+                        : "text-gray-600"
+                    }`
+                  }
+                >
+                  <FaUsers className="w-5 h-5" />
 
-                <span className="mx-4 font-medium">All Users</span>
-              </NavLink>
+                  <span className="mx-4 font-medium">All Users</span>
+                </NavLink>
+                <NavLink
+                  end
+                  to="/dashboard/all-transaction"
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5 rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                      isActive
+                        ? "bg-[#3a89ff42]  text-[#2461E9]"
+                        : "text-gray-600"
+                    }`
+                  }
+                >
+                  <AiOutlineTransaction className="w-5 h-5" />
+
+                  <span className="mx-4 font-medium">All Transaction</span>
+                </NavLink>
+              </>
             )}
 
             {/* user */}
@@ -139,6 +157,21 @@ const Sidebar = () => {
 
                   <span className="mx-4 font-medium">Cash In</span>
                 </NavLink>
+                <NavLink
+                  end
+                  to="/dashboard/transaction-history"
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                      isActive
+                        ? "bg-[#3a89ff42]  text-[#2461E9]"
+                        : "text-gray-600"
+                    }`
+                  }
+                >
+                  <RiHistoryFill className="w-5 h-5" />
+
+                  <span className="mx-4 font-medium">Trans History</span>
+                </NavLink>
               </>
             )}
 
@@ -159,6 +192,21 @@ const Sidebar = () => {
                   <BsFillSendCheckFill size={18} />
 
                   <span className="mx-4 font-medium">Trans Request</span>
+                </NavLink>
+                <NavLink
+                  end
+                  to="/dashboard/transaction-history-agent"
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  rounded-md hover:text-[#2461E9]  transition-colors duration-300 transform  hover:bg-gray-300 ${
+                      isActive
+                        ? "bg-[#3a89ff42]  text-[#2461E9]"
+                        : "text-gray-600"
+                    }`
+                  }
+                >
+                  <RiHistoryFill className="w-5 h-5" />
+
+                  <span className="mx-4 font-medium">Trans History</span>
                 </NavLink>
               </>
             )}

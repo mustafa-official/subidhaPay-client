@@ -88,9 +88,9 @@ const Login = () => {
             <div className="absolute cursor-pointer top-1/2 right-6 transform -translate-y-1/2">
               <div onClick={handleShowPin}>
                 {showPass ? (
-                  <LiaEyeSlashSolid size={20} />
+                  <LiaEyeSlashSolid color="gray" size={20} />
                 ) : (
-                  <LiaEyeSolid size={20} />
+                  <LiaEyeSolid color="gray" size={20} />
                 )}
               </div>
             </div>

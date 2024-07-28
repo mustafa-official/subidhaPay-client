@@ -78,14 +78,14 @@ const Sidebar = () => {
                   end
                   to="/dashboard/all-user"
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2  hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
+                    `relative group flex items-center px-4 py-2  hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
                       isActive
                         ? "bg-indigo-200  text-indigo-600"
                         : "text-gray-800"
                     }`
                   }
                 >
-                  <FaUsers className="w-5 h-5" />
+                  <FaUsers className="w-5 h-5 transition-transform duration-300 transform group-hover:rotate-[90deg]" />
 
                   <span className="mx-4 font-medium">All Users</span>
                 </NavLink>
@@ -93,14 +93,14 @@ const Sidebar = () => {
                   end
                   to="/dashboard/all-transaction"
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5 hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
+                    `relative group flex items-center px-4 py-2 my-5 hover:text-indigo-600  transition-colors duration-300 transform  hover:bg-indigo-200 ${
                       isActive
                         ? "bg-indigo-200  text-indigo-600"
                         : "text-gray-800"
                     }`
                   }
                 >
-                  <AiOutlineTransaction className="w-5 h-5" />
+                  <AiOutlineTransaction className="w-5 h-5 transition-transform duration-300 transform group-hover:rotate-[90deg]" />
 
                   <span className="mx-4 font-medium">All Transaction</span>
                 </NavLink>

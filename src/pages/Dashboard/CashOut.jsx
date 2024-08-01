@@ -4,12 +4,13 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { useState } from "react";
 import { ImSpinner3 } from "react-icons/im";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { RiKeyFill } from "react-icons/ri";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const CashOut = () => {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [loading, setLoading] = useState(false);
 
   const handleCashOut = async (e) => {
@@ -22,7 +23,7 @@ const CashOut = () => {
     const cashOutInfo = { mobile, amount, pin, userEmail: user?.email };
     console.log(cashOutInfo);
     try {
-      const { data } = await axiosPublic.patch("/cash-out", cashOutInfo);
+      const { data } = await axiosSecure.patch("/cash-out", cashOutInfo);
       if (data.data === "Cash out successful") {
         setLoading(false);
         form.reset();
@@ -50,7 +51,7 @@ const CashOut = () => {
     <div className="flex justify-center items-center">
       <form
         onSubmit={handleCashOut}
-        className="flex justify-center items-center h-[90vh] w-[80%] lg:w-[50%] flex-col gap-3"
+        className="flex justify-center items-center h-[90vh] w-[80%] lg:w-[40%] flex-col gap-3"
       >
         <label className="input input-bordered flex items-center gap-2 w-full">
           <FaPhoneAlt color="#626973" size={14}></FaPhoneAlt>
@@ -89,7 +90,7 @@ const CashOut = () => {
         <button
           disabled={loading}
           type="submit"
-          className="disabled:cursor-not-allowed flex items-center px-4 w-full justify-center py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+          className="disabled:cursor-not-allowed flex items-center px-4 w-full justify-center h-12 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
         >
           {loading ? (
             <ImSpinner3 size={18} className="animate-spin m-auto"></ImSpinner3>

@@ -8,7 +8,7 @@ import { RiKeyFill } from "react-icons/ri";
 import { LiaEyeSlashSolid, LiaEyeSolid } from "react-icons/lia";
 import { BsQuestionDiamondFill } from "react-icons/bs";
 import { GrMail } from "react-icons/gr";
-//  const { data } = await axiosPublic.post("/register", registerInfo);
+import logo from "../../img/subidhaPay.png";
 
 const Register = () => {
   const axiosPublic = useAxiosPublic();
@@ -67,100 +67,129 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div>
-        <form
-          onSubmit={handleRegister}
-          className="flex justify-center items-center h-[90vh] flex-col gap-3"
-        >
-          <label className="input input-bordered flex items-center gap-2 w-full">
-            <FaUser color="#4F46E5" size={14}></FaUser>
-            <input
-              name="name"
-              type="text"
-              placeholder="Name"
-              className=""
-              required
-            />
-          </label>
-          <label className="input input-bordered flex items-center gap-2 w-full">
-            <FaPhoneAlt color="#4F46E5" size={14}></FaPhoneAlt>
-            <input
-              name="mobile"
-              type="tel"
-              placeholder="Phone"
-              pattern="^01\d{9}$"
-              required
-              title="Mobile number must start with 01 and be 11 digits"
-            />
-          </label>
-          <label className="input input-bordered flex items-center gap-2 w-full">
-            <GrMail color="#4F46E5" size={16}></GrMail>
-            <input
-              className="pr-14"
-              name="email"
-              type="email"
-              placeholder="Email"
-              required
-            />
-          </label>
-          <label className="input input-bordered flex items-center gap-1 w-full">
-            <BsQuestionDiamondFill
-              color="#4F46E5"
-              size={16}
-            ></BsQuestionDiamondFill>
-            <select name="role" className="w-full">
-              <option value="user">User</option>
-              <option value="agent">Agent</option>
-            </select>
-          </label>
+    <section className="flex justify-center items-center min-h-screen">
+      <div className="mockup-phone">
+      <div className="camera"></div>
+      <div className="display">
+        <div className="artboard artboard-demo phone-1">
+          <div className="flex justify-center items-center h-screen">
+            <div>
+              <form
+                onSubmit={handleRegister}
+                className="flex justify-center items-center h-[90vh] flex-col gap-[10px]"
+              >
+                <div className="flex flex-col justify-center items-center my-2">
+                  <div className="relative">
+                    <img src={logo} className="w-20" alt="" />
+                    {/* <div className="absolute top-[8px] right-6">
+                      <span className="relative flex h-[7px] w-[7px]">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#4F46E5] opacity-100"></span>
+                        <span className="relative inline-flex size-[7px] rounded-full bg-[#4F46E5]"></span>
+                      </span>
+                    </div> */}
+                  </div>
+                  <h2 className="text-[#5104d4] font-bold text-xl">
+                    <span className="text-indigo-600 font-semibold">
+                      Subidha
+                    </span>
+                    Pay
+                  </h2>
+                </div>
+                <label className="input input-bordered flex items-center gap-2 w-full">
+                  <FaUser color="#4F46E5" size={14}></FaUser>
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder="Name"
+                    className=""
+                    required
+                  />
+                </label>
+                <label className="input input-bordered flex items-center gap-2 w-full">
+                  <FaPhoneAlt color="#4F46E5" size={14}></FaPhoneAlt>
+                  <input
+                    name="mobile"
+                    type="tel"
+                    placeholder="Mobile"
+                    pattern="^01\d{9}$"
+                    required
+                    title="Mobile number must start with 01 and be 11 digits"
+                  />
+                </label>
+                <label className="input input-bordered flex items-center gap-2 w-full">
+                  <GrMail color="#4F46E5" size={16}></GrMail>
+                  <input
+                    className="sm:pr-10"
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    required
+                  />
+                </label>
+                <label className="input input-bordered flex items-center gap-1 w-full">
+                  <BsQuestionDiamondFill
+                    color="#4F46E5"
+                    size={16}
+                  ></BsQuestionDiamondFill>
+                  <select name="role" className="w-full">
+                    <option value="user">User</option>
+                    <option value="agent">Agent</option>
+                  </select>
+                </label>
 
-          <label className="input relative input-bordered flex items-center gap-2 w-full">
-            <RiKeyFill color="#4F46E5" size={16}></RiKeyFill>
-            <input
-              name="pin"
-              type={showPass ? "text" : "password"}
-              placeholder="PIN"
-              required
-              pattern="\d{5}"
-              minLength={5}
-              maxLength={5}
-              title="PIN must be a 5-digit number"
-            />
+                <label className="input relative input-bordered flex items-center gap-2 w-full">
+                  <RiKeyFill color="#4F46E5" size={16}></RiKeyFill>
+                  <input
+                    name="pin"
+                    type={showPass ? "text" : "password"}
+                    placeholder="PIN"
+                    required
+                    pattern="\d{5}"
+                    minLength={5}
+                    maxLength={5}
+                    title="PIN must be a 5-digit number"
+                  />
 
-            <div className="absolute cursor-pointer top-1/2 right-4 transform -translate-y-1/2">
-              <div onClick={handleShowPin}>
-                {showPass ? (
-                  <LiaEyeSlashSolid color="gray" size={20} />
-                ) : (
-                  <LiaEyeSolid color="gray" size={20} />
-                )}
-              </div>
+                  <div className="absolute cursor-pointer top-1/2 right-4 transform -translate-y-1/2">
+                    <div onClick={handleShowPin}>
+                      {showPass ? (
+                        <LiaEyeSlashSolid color="gray" size={20} />
+                      ) : (
+                        <LiaEyeSolid color="gray" size={20} />
+                      )}
+                    </div>
+                  </div>
+                </label>
+                <button
+                  disabled={loading}
+                  type="submit"
+                  className="disabled:cursor-not-allowed flex items-center px-4 w-full justify-center h-12 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-indigo-600 hover:bg-indigo-700 rounded-lg  focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                >
+                  {loading ? (
+                    <ImSpinner3
+                      size={18}
+                      className="animate-spin m-auto"
+                    ></ImSpinner3>
+                  ) : (
+                    "Register"
+                  )}
+                </button>
+                <small>
+                  Already have an account?{" "}
+                  <Link
+                    to="/"
+                    className="text-indigo-600 font-semibold hover:underline"
+                  >
+                    Login
+                  </Link>
+                </small>
+              </form>
             </div>
-          </label>
-          <button
-            disabled={loading}
-            type="submit"
-            className="disabled:cursor-not-allowed flex items-center px-4 w-full justify-center h-12 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-indigo-600 hover:bg-indigo-700 rounded-lg  focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
-          >
-            {loading ? (
-              <ImSpinner3
-                size={18}
-                className="animate-spin m-auto"
-              ></ImSpinner3>
-            ) : (
-              "Register"
-            )}
-          </button>
-          <small>
-            Already have an account?{" "}
-            <Link to="/login" className="text-indigo-600 font-semibold hover:underline">
-              Login
-            </Link>
-          </small>
-        </form>
+          </div>
+        </div>
       </div>
     </div>
+    </section>
   );
 };
 

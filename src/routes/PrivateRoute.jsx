@@ -10,7 +10,7 @@ const PrivateRoute = ({ children }) => {
     return <Spinner />;
   }
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/" replace />;
   }
   return children;
 };

@@ -3,12 +3,13 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { ImSpinner3 } from "react-icons/im";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const CashIn = () => {
   const [loading, setLoading] = useState(false);
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const handleCashIn = async (e) => {
     setLoading(true);
@@ -20,7 +21,7 @@ const CashIn = () => {
     console.log(cashInInfo);
 
     try {
-      const { data } = await axiosPublic.post("/cashin-request", cashInInfo);
+      const { data } = await axiosSecure.post("/cashin-request", cashInInfo);
       if (data.insertedId) {
         form.reset();
         setLoading(false);
@@ -41,7 +42,7 @@ const CashIn = () => {
     <div className="flex justify-center items-center">
       <form
         onSubmit={handleCashIn}
-        className="flex justify-center items-center h-[90vh] w-[80%] lg:w-[50%] flex-col gap-3"
+        className="flex justify-center items-center h-[90vh] w-[80%] lg:w-[40%] flex-col gap-3"
       >
         <label className="input input-bordered flex items-center gap-2 w-full">
           <FaPhoneAlt color="#626973" size={14}></FaPhoneAlt>
@@ -71,7 +72,7 @@ const CashIn = () => {
         <button
           disabled={loading}
           type="submit"
-          className="disabled:cursor-not-allowed flex items-center px-4 w-full justify-center py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+          className="disabled:cursor-not-allowed flex items-center px-4 w-full justify-center h-12 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
         >
           {loading ? (
             <ImSpinner3 size={18} className="animate-spin m-auto"></ImSpinner3>

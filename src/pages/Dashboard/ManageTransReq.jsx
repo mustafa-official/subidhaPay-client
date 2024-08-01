@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import Spinner from "../../components/Spinner";
 import { LuShieldClose } from "react-icons/lu";
 import { MdVerifiedUser } from "react-icons/md";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ManageTransReq = () => {
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const {
     data: allPendingUser = [],
@@ -16,7 +17,7 @@ const ManageTransReq = () => {
   } = useQuery({
     queryKey: ["allTransaction", user?.email],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(
+      const { data } = await axiosSecure.get(
         `/transaction-request/${user?.email}`
       );
       return data;
@@ -25,7 +26,7 @@ const ManageTransReq = () => {
 
   const handleReqApprove = async (user) => {
     try {
-      const { data } = await axiosPublic.patch(
+      const { data } = await axiosSecure.patch(
         `/cashin-approve/${user?._id}`,
         user
       );
@@ -42,6 +43,7 @@ const ManageTransReq = () => {
       toast.error("An error occurred");
     }
   };
+  
   if (isLoading) return <Spinner />;
   return (
     <section className="container px-4 mx-auto mt-3">

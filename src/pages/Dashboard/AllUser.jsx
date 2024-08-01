@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Spinner from "../../components/Spinner";
 import { MdBlockFlipped, MdVerifiedUser } from "react-icons/md";
 import { LuShieldClose } from "react-icons/lu";
@@ -7,9 +6,11 @@ import toast from "react-hot-toast";
 import { FiSearch } from "react-icons/fi";
 import { useState } from "react";
 import noresults from "../../img/no-results.png";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AllUser = () => {
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [name, setName] = useState("");
   const {
     data: users = [],
@@ -18,13 +19,13 @@ const AllUser = () => {
   } = useQuery({
     queryKey: ["users", name],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/users?name=${name}`);
+      const { data } = await axiosSecure.get(`/users?name=${name}`);
       return data;
     },
   });
 
   const handleActivate = async (user) => {
-    const { data } = await axiosPublic.patch(`/user/${user?._id}`);
+    const { data } = await axiosSecure.patch(`/user/${user?._id}?role=${user?.role}`);
     if (data.modifiedCount > 0) {
       toast.success(`${user?.name} account is now verified!!`);
       refetch();
@@ -32,7 +33,7 @@ const AllUser = () => {
   };
 
   const handleBlock = async (user) => {
-    const { data } = await axiosPublic.patch(`/block-user/${user?._id}`);
+    const { data } = await axiosSecure.patch(`/block-user/${user?._id}`);
     if (data.modifiedCount > 0) {
       toast.success(`${user?.name} account is Blocked!`);
       refetch();
@@ -88,11 +89,11 @@ const AllUser = () => {
                 <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                   <div className="overflow-hidden border border-gray-200  md:rounded-lg">
                     <table className="min-w-full divide-y divide-gray-200">
-                      <thead className="bg-gray-50">
+                      <thead className="bg-indigo-600 text-white">
                         <tr>
                           <th
                             scope="col"
-                            className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
+                            className="py-3.5 px-4 text-sm  text-left rtl:text-right "
                           >
                             <div className="flex items-center gap-x-3">
                               <span>Name</span>
@@ -100,7 +101,7 @@ const AllUser = () => {
                           </th>
                           <th
                             scope="col"
-                            className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
+                            className="py-3.5 px-4 text-sm  text-left rtl:text-right "
                           >
                             <div className="flex items-center gap-x-3">
                               <span>Email</span>
@@ -109,19 +110,25 @@ const AllUser = () => {
 
                           <th
                             scope="col"
-                            className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                            className="px-4 py-3.5 text-sm  text-left rtl:text-right "
                           >
-                            <span>Phone</span>
+                            <span>Mobile</span>
+                          </th>
+                          <th
+                            scope="col"
+                            className="px-4 py-3.5 text-sm  text-left rtl:text-right "
+                          >
+                            <span>Role</span>
                           </th>
 
                           <th
                             scope="col"
-                            className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                            className="px-4 py-3.5 text-sm  text-left rtl:text-right "
                           >
                             Status
                           </th>
 
-                          <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                          <th className="px-4 py-3.5 text-sm  text-left rtl:text-right ">
                             Actions
                           </th>
                         </tr>
@@ -129,15 +136,18 @@ const AllUser = () => {
                       <tbody className="bg-white divide-y divide-gray-200 ">
                         {users?.map((user) => (
                           <tr key={user?._id}>
-                            <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                            <td className="px-4 py-4 text-sm text-gray-700  whitespace-nowrap">
                               {user?.name}
                             </td>
-                            <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                            <td className="px-4 py-4 text-sm text-gray-700  whitespace-nowrap">
                               {user?.email}
                             </td>
 
-                            <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                            <td className="px-4 py-4 text-sm text-gray-700  whitespace-nowrap">
                               {user?.mobile}
+                            </td>
+                            <td className="px-4 py-4 capitalize text-sm text-gray-700  whitespace-nowrap">
+                              {user?.role}
                             </td>
 
                             <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">

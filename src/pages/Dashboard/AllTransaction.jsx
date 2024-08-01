@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Spinner from "../../components/Spinner";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AllTransaction = () => {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { data: transactions = [], isLoading } = useQuery({
     queryKey: ["transactions", user],
     queryFn: async () => {
-      const { data } = await axiosPublic.get("/transactions");
+      const { data } = await axiosSecure.get("/transactions");
       return data;
     },
   });
@@ -32,11 +33,11 @@ const AllTransaction = () => {
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden border border-gray-200  md:rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+                <thead className="bg-indigo-600 text-white">
                   <tr>
                     <th
                       scope="col"
-                      className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      className="py-3.5 px-4 text-sm text-left rtl:text-right "
                     >
                       <div className="flex items-center gap-x-3">
                         <span>Sender Mobile</span>
@@ -44,7 +45,7 @@ const AllTransaction = () => {
                     </th>
                     <th
                       scope="col"
-                      className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      className="py-3.5 px-4 text-sm text-left rtl:text-right "
                     >
                       <div className="flex items-center gap-x-3">
                         <span>Receiver Mobile</span>
@@ -53,20 +54,20 @@ const AllTransaction = () => {
 
                     <th
                       scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      className="px-4 py-3.5 text-sm text-left rtl:text-right "
                     >
                       <span>Transaction Type</span>
                     </th>
                     <th
                       scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      className="px-4 py-3.5 text-sm text-left rtl:text-right "
                     >
                       <span>Amount</span>
                     </th>
 
                     <th
                       scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      className="px-4 py-3.5 text-sm text-left rtl:text-right "
                     >
                       Date
                     </th>
@@ -77,23 +78,23 @@ const AllTransaction = () => {
                 <tbody className="bg-white divide-y divide-gray-200 ">
                   {transactions?.map((user) => (
                     <tr key={user?._id}>
-                      <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                      <td className="px-4 py-4 text-sm text-gray-700   whitespace-nowrap">
                         {user?.userMobile}
                       </td>
-                      <td className="px-4 capitalize py-4 text-sm text-gray-500  whitespace-nowrap">
+                      <td className="px-4 capitalize py-4 text-sm text-gray-700  whitespace-nowrap">
                         {user?.receiverMobile}
                        
 
                       </td>
-                      <td className="px-4 capitalize py-4 text-sm text-gray-500  whitespace-nowrap">
+                      <td className="px-4 capitalize py-4 text-sm text-gray-700  whitespace-nowrap">
                        
                         {user?.type}
                       </td>
-                      <td className="px-4 capitalize py-4 text-sm text-gray-500  whitespace-nowrap">
+                      <td className="px-4 capitalize py-4 text-sm text-gray-700  whitespace-nowrap">
                        
                       {user?.amount} Tk
                       </td>
-                      <td className="px-4 capitalize py-4 text-sm text-gray-500  whitespace-nowrap">
+                      <td className="px-4 capitalize py-4 text-sm text-gray-700  whitespace-nowrap">
                        
                       {user?.date}
                       </td>

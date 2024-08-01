@@ -1,12 +1,11 @@
-import Register from "../Register/Register";
-
+import Login from "../Login/Login";
 
 const Home = () => {
-    return (
-        <main>
-            <Register></Register>
-        </main>
-    );
+  return (
+    <main>
+      <Login></Login>
+    </main>
+  );
 };
 
 export default Home;

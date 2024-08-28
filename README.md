@@ -4,8 +4,8 @@
 
 Live Link: https://subidha-pay.web.app
 
-Admin UserName: mostofa@gmail.com
-Admin Password: 54321
+Admin username: mostofa@gmail.com
+Admin password: 54321
 
 ## Features
 - User: Perform essential financial transactions, including Cash-In, Cash-Out, and Send Money.

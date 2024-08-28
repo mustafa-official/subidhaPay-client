@@ -2,9 +2,9 @@
 
 #### Subidha Pay is a mobile financial service platform that helps users, agents, and admins handle financial transactions easily. Users can send money, cash in, and cash out, while agents approve cash in  request. Admins oversee the entire system, managing accounts and ensuring everything runs smoothly. The platform is designed to make these processes secure and efficient for everyone involved.
 
-Live Link: https://subidha-pay.web.app
+Live Link: https://subidha-pay.web.app <br>
 
-Admin username: mostofa@gmail.com
+Admin username: mostofa@gmail.com <br>
 Admin password: 54321
 
 ## Features
